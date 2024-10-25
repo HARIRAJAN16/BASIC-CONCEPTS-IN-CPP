@@ -1,0 +1,44 @@
+#include<std/bitsc++.h>
+using namespace std;
+class Solution {
+  public:
+    long long int commDiv(long long int a,long long int b) {map<int,int>mp;
+        vector<long long int>ans;
+        for(long long int i=1;i<=sqrt(a);i++){
+            if(a%i==0){
+                long long int q=a/i;
+                if(q==i){
+                    ans.push_back(q);
+                }
+                else if(q!=i){
+                    ans.push_back(i);
+                    ans.push_back(q);
+                }
+            }
+            
+        }
+        for(long long int i=1;i<=sqrt(b);i++){
+            if(b%i==0){
+                long long int q=b/i;
+                if(q==i){
+                    ans.push_back(q);
+                }
+                else if(q!=i){
+                    ans.push_back(i);
+                    ans.push_back(q);
+                }
+            }
+            
+        }
+        for(int i=0;i<ans.size();i++){
+            mp[ans[i]]++;
+        }
+        int count=0;
+        for(auto x:mp){
+            if(x.second>1){
+                count++;
+            }
+        }
+        return count;
+    }
+};
